@@ -30,11 +30,7 @@ if (!exec($clone_cmd)){
 }
 chdir("$project.git");
 
-//$cmd = "cd $project.git";
-//print "Running $cmd\n";
-//print "------------------\n";
-//exec($cmd);
-
+// @TODO: Invoke GitHub API to create the repo!!!
 
 $cmd = "git remote set-url --push origin $github_git_repo";
 print "Running $cmd \n";
