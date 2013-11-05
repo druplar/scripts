@@ -4,9 +4,18 @@
 // Get Project from $argv
 if (empty($argv[1])){
   exit("You need to specify a Drupal.org project.\n");
+} else {
+  $project = $argv[1];
 }
 
-$project = $argv[1];
+// Get Path
+if (!empty($argv[2])){
+  if (!file_exists($argv[2])){
+    exit("You must specify a path that exists.\n");
+  } else {
+    $path = $argv[2];
+  }
+}
 
 $hubdrop_github_org = 'hubdrop-projects';
 
@@ -21,7 +30,13 @@ print "------------------\n";
 
 // Clone the Drupal.org repo.
 // See https://help.github.com/articles/duplicating-a-repository
-$clone_cmd = "git clone $drupal_git_repo --mirror";
+
+if ($path){
+  $repo_path = "$path/$project.git";
+} else {
+  $repo_path = "$project.git";
+}
+$clone_cmd = "git clone $drupal_git_repo $repo_path --mirror";
 
 print "Running $clone_cmd \n";
 print "------------------\n";
