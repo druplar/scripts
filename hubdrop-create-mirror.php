@@ -43,7 +43,8 @@ print "------------------\n";
 if (!exec($clone_cmd)){
   exit("Unable to clone repo.\n");
 }
-chdir($repo_path);
+// @TODO: Un-hardcode this.
+chdir("/var/hubdrop/repos/$project.git");
 
 // @TODO: Invoke GitHub API to create the repo!!!
 
@@ -62,3 +63,9 @@ $cmd = "git push --mirror";
 print "Running $cmd \n";
 print "------------------\n";
 exec($cmd);
+
+$cmd = "chmod g+w . -R";
+print "Running $cmd \n";
+print "------------------\n";
+exec($cmd);
+
