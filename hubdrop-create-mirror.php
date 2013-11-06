@@ -43,7 +43,7 @@ print "------------------\n";
 if (!exec($clone_cmd)){
   exit("Unable to clone repo.\n");
 }
-chdir("$project.git");
+chdir($repo_path);
 
 // @TODO: Invoke GitHub API to create the repo!!!
 
