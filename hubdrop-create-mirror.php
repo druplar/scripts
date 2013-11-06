@@ -20,7 +20,7 @@ if (!empty($argv[2])){
 $hubdrop_github_org = 'hubdrop-projects';
 
 $drupal_git_repo = "http://git.drupal.org/project/$project.git";
-$github_git_repo = "https://github.com/$hubdrop_github_org/$project.git";
+$github_git_repo = "git@github.com:$hubdrop_github_org/$project.git";
 
 // Hello World
 print "Welcome to hubdrop.\n";
