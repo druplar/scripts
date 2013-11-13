@@ -25,11 +25,6 @@ if ($handle = opendir($directory)) {
       print "Running $cmd \n";
       print "------------------\n";
       exec($cmd);
-
-      $cmd = "chmod g+w . -R";
-      print "Running $cmd \n";
-      print "------------------\n";
-      exec($cmd);
     }
   }
   closedir($handle);
