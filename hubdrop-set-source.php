@@ -45,7 +45,11 @@ $drupal_write_repo = "$user@git.drupal.org:project/$project.git";
 $github_git_repo = "git@github.com:$hubdrop_github_org/$project.git";
 
 // @TODO: Un-hardcode this.
-chdir("/var/hubdrop/repos/$project.git");
+$d = "/var/hubdrop/repos/$project.git";
+chdir($d);
+
+print $d . "\n";
+print "------------------\n";
 
 // @TODO: Test for access first!
 if ($source == 'github'){
@@ -66,8 +70,10 @@ elseif ($source == 'drupal') {
  */
 function hexec($cmd){
   $output = '';
-  $output .= "Running $cmd \n";
-  $output .="------------------\n";
-  $output .= shell_exec($cmd);
-  return $output;
+  $output .= "Running $cmd\n";
+  $output .= "------------------\n";
+
+  $lines = array();
+  exec($cmd, $lines);
+  return $output . implode("\n", $lines);
 }
