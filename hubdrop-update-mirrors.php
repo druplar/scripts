@@ -16,16 +16,21 @@ if ($handle = opendir($directory)) {
 
       chdir($full_path);
 
-      $cmd = "git fetch -p origin";
-      print "Running $cmd \n";
-      print "------------------\n";
-      exec($cmd);
-
-      $cmd = "git push --mirror";
-      print "Running $cmd \n";
-      print "------------------\n";
-      exec($cmd);
+      print hexec("git fetch -p origin");
+      print hexec("git push --mirror");
     }
   }
   closedir($handle);
+}
+
+
+/**
+ * HubDrop Exec
+ */
+function hexec($cmd){
+  $output = '';
+  $output .= "Running $cmd \n";
+  $output .="------------------\n";
+  $output .= shell_exec($cmd);
+  return $output;
 }
