@@ -39,7 +39,7 @@ if (!empty($argv[2])){
   exit("You must specify either 'drupal' or 'github' as the source repo.\n");
 }
 
-$hubdrop_github_org = 'drupal-project';
+$hubdrop_github_org = 'drupalprojects';
 
 $drupal_read_repo = "http://git.drupal.org/project/$project.git";
 $drupal_write_repo = "$user@git.drupal.org:project/$project.git";

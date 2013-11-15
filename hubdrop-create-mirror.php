@@ -21,7 +21,7 @@ else {
   $path = '.';
 }
 
-$hubdrop_github_org = 'drupal-project';
+$hubdrop_github_org = 'drupalprojects';
 
 $drupal_git_repo = "http://git.drupal.org/project/$project.git";
 $github_git_repo = "git@github.com:$hubdrop_github_org/$project.git";
