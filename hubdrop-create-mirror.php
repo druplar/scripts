@@ -52,6 +52,12 @@ if (!exec($clone_cmd)){
 
 // Change to path directory
 chdir($repo_path);
+
+// Set fetch configs to ignore pull requests
+// See http://christoph.ruegg.name/blog/git-howto-mirror-a-github-repository-without-pull-refs.html
+exec('git config --local remote.origin.fetch "+refs/tags/*:refs/tags/*"');
+exec('git config --local remote.origin.fetch "+refs/heads/*:refs/heads/*" --add');
+
 print hexec("git remote set-url --push origin $github_git_repo");
 print hexec("git fetch -p origin");
 print hexec("git push --mirror");
