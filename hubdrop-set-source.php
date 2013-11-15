@@ -45,7 +45,7 @@ $drupal_write_repo = "$user@git.drupal.org:project/$project.git";
 $github_git_repo = "git@github.com:$hubdrop_github_org/$project.git";
 
 // @TODO: Un-hardcode this.
-chdir("/home/jon/Mirrors/$project.git");
+chdir("/var/hubdrop/$project.git");
 
 // @TODO: Test for access first!
 if ($source == 'github'){
