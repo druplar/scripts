@@ -55,6 +55,7 @@ chdir($repo_path);
 
 // Set fetch configs to ignore pull requests
 // See http://christoph.ruegg.name/blog/git-howto-mirror-a-github-repository-without-pull-refs.html
+exec('git config --local --unset-all remote.origin.fetch');
 exec('git config --local remote.origin.fetch "+refs/tags/*:refs/tags/*"');
 exec('git config --local remote.origin.fetch "+refs/heads/*:refs/heads/*" --add');
 
