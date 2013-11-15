@@ -16,6 +16,10 @@ if (!empty($argv[2])){
     $path = $argv[2];
   }
 }
+// Default path
+else {
+  $path = '.';
+}
 
 $hubdrop_github_org = 'hubdrop-projects';
 
@@ -43,29 +47,24 @@ print "------------------\n";
 if (!exec($clone_cmd)){
   exit("Unable to clone repo.\n");
 }
-// @TODO: Un-hardcode this.
-chdir("/var/hubdrop/repos/$project.git");
 
-// @TODO: Invoke GitHub API to create the repo!!!
+// @TODO: Invoke GitHub API to create the repo, if it doesn't exist yet.
 
-$cmd = "git remote set-url --push origin $github_git_repo";
-print "Running $cmd \n";
-print "------------------\n";
-exec($cmd);
+// Change to path directory
+chdir($repo_path);
+hexec("git remote set-url --push origin $github_git_repo");
+hexec("git fetch -p origin");
+hexec("git push --mirror");
+hexec("chmod g+w . -R");
 
-// @TODO: Call hubdrop-update-mirrors instead?
-$cmd = "git fetch -p origin";
-print "Running $cmd \n";
-print "------------------\n";
-exec($cmd);
-
-$cmd = "git push --mirror";
-print "Running $cmd \n";
-print "------------------\n";
-exec($cmd);
-
-$cmd = "chmod g+w . -R";
-print "Running $cmd \n";
-print "------------------\n";
-exec($cmd);
-
+/**
+ * HubDrop Exec
+ */
+function hexec($cmd){
+  $cmd = "chmod g+w . -R";
+  $output = '';
+  $output .= "Running $cmd \n";
+  $output .="------------------\n";
+  $output .= shell_exec($cmd);
+  return $output;
+}
