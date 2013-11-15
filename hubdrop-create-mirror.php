@@ -61,7 +61,6 @@ print hexec("chmod g+w . -R");
  * HubDrop Exec
  */
 function hexec($cmd){
-  $cmd = "chmod g+w . -R";
   $output = '';
   $output .= "Running $cmd \n";
   $output .="------------------\n";
