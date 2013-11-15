@@ -52,10 +52,10 @@ if (!exec($clone_cmd)){
 
 // Change to path directory
 chdir($repo_path);
-hexec("git remote set-url --push origin $github_git_repo");
-hexec("git fetch -p origin");
-hexec("git push --mirror");
-hexec("chmod g+w . -R");
+print hexec("git remote set-url --push origin $github_git_repo");
+print hexec("git fetch -p origin");
+print hexec("git push --mirror");
+print hexec("chmod g+w . -R");
 
 /**
  * HubDrop Exec
