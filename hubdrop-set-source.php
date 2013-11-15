@@ -7,7 +7,7 @@ print "==================\n";
 
 $project = '';
 $source = '';
-$user = '';
+$user = 'hubdrop';
 
 // Get Project from $argv 1
 if (empty($argv[1])){
@@ -21,21 +21,22 @@ if (!empty($argv[2])){
 
   // Ensure its either drupal or github
   if ($argv[2] != 'drupal' && $argv[2] != 'github'){
-    exit("You must specify either 'drupal' or 'github' as the source repo. If 'github', you must also specify a drupal username. \n");
+    exit("You must specify either 'drupal' or 'github' as the source repo.\n");
   } else {
     $source = $argv[2];
 
-    // If it's drupal, we need a username:
-    if ($source == 'github') {
-      if (empty($argv[3])){
-        exit("If source is github, you must specify a drupal user with commit access to $project.\n");
-      } else {
-        $user = $argv[3];
-      }
-    }
+    // Removing this requirement.  hubdrop user makes much more sense.
+    //// If it's drupal, we need a username:
+    //if ($source == 'github') {
+    //  if (empty($argv[3])){
+    //    exit("If source is github, you must specify a drupal user with commit access to $project.\n");
+    //  } else {
+    //    $user = $argv[3];
+    //  }
+    //}
   }
 } else {
-  exit("You must specify either 'drupal' or 'github' as the source repo. If 'github', you must also specify a username. \n");
+  exit("You must specify either 'drupal' or 'github' as the source repo.\n");
 }
 
 $hubdrop_github_org = 'hubdrop-projects';
